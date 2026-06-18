@@ -1,7 +1,5 @@
-![SAP Google Cloud Partnership](assets/sap-google-cloud-partnership.png)
-
 # SAP + Google Cloud: AI Innovation Space
-Welcome to the innovation repository for the **SAP + Google Cloud** capabilities. This space is designed to showcase the deep integration between SAP and Google Cloud AI capabilities.
+Welcome to the innovation repository for the **SAP + Google Cloud** AI capabilities. This space is designed to showcase the deep integration between SAP and Google Cloud AI capabilities.
 
 This is not an officially supported Google product. This project is not eligible for the [Google Open Source Software Vulnerability Rewards Program](https://bughunters.google.com/open-source-security).
 
@@ -23,6 +21,6 @@ To begin exploring these integrations, we recommend starting with the [`01-tutor
 
 ---
 ## 🤝 The Innovation Space
-This repository reflects our efforts to combine **SAP’s** enterprise business applications with Generative AI capabilities running on **Google Cloud’s** secure and scalable infrastructure. The goal is to demonstrate how the two platforms can be used together to create innovative solutions that solve real-world business problems. The solutions target various SAP LoB (Line of Business) and cross-LoB processes, demonstrating the breadth of possibilities for AI-driven automation and intelligence.
+This repository reflects our efforts to combine **SAP’s** enterprise business applications with Generative AI capabilities running on **Google Cloud’s** secure and scalable infrastructure. The goal is to demonstrate how they can be used together to create innovative solutions that solve real-world business problems. The solutions target various business processes across industries, demonstrating the breadth of possibilities for AI-driven automation and intelligence.
 
 We focus on practical, end-to-end implementations that businesses can adopt to enhance productivity and drive tangible outcomes.
