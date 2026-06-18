@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""ADK BTP Simple Agent with secure authentication.
+
+This agent demonstrates how to integrate with a secured OpenAPI endpoint
+using Google ADK's OpenAPIToolset and manage authentication headers via
+ToolContext state.
+"""
+
 from google.adk.agents import Agent
 from google.adk.apps import App
 from google.adk.models import Gemini
@@ -44,6 +51,15 @@ with open(apispec_file_path, "r") as f:
 # Get Auth headers from the state
 # ----------------------------------------------------- #
 def get_auth_headers(context: ToolContext) -> dict:
+    """Retrieves authentication headers from the tool context state.
+
+    Args:
+        context: The ToolContext object containing the current state.
+
+    Returns:
+        A dictionary with the Authorization header if a token is present,
+        otherwise an empty dictionary.
+    """
     token = context.state.get(GE_AUTH_ID)
     if not token:
         return {}
@@ -62,6 +78,17 @@ currency_conversion_toolset = OpenAPIToolset(
 # Tool for printing out the state - only use in Dev
 #------------------------------------------------------------------------#
 def get_agent_state(tool_context: ToolContext):
+    """Returns the agent's current state as a JSON string.
+
+    This function is intended for development and debugging purposes.
+
+    Args:
+        tool_context: The ToolContext object containing the agent's state.
+
+    Returns:
+        A JSON string representation of the agent's state, or an error message
+        if an exception occurs.
+    """
     try:
         _state = tool_context.state.to_dict()
         return json.dumps(_state)

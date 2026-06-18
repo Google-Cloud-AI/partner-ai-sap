@@ -12,6 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""A script to demonstrate a 3-legged OAuth flow with BTP XSUAA and
+interact with a secured currency conversion API.
+
+This script sets up a local web server to catch the OAuth redirect,
+obtains an access token, and then uses it to call a secured API.
+"""
+
 import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -34,9 +41,14 @@ auth_code = None
 # Callback handler for a 3-legged OAuth flow
 #------------------------------------------------------------------------#
 class CallbackHandler(BaseHTTPRequestHandler):
-    """A simple local web server to catch the redirect from Salesforce."""
+    """A simple local web server to catch the redirect from BTP."""
     
     def do_GET(self):
+        """Handles GET requests to the callback URI.
+
+        It extracts the authorization code from the URL query parameters,
+        stores it globally, and sends a success message to the browser.
+        """
         global auth_code
         query_components = parse_qs(urlparse(self.path).query)
         
@@ -52,6 +64,10 @@ class CallbackHandler(BaseHTTPRequestHandler):
             self.end_headers()
             
     def log_message(self, format, *args):
+        """Suppresses the default HTTP server logging.
+
+        This is done to keep the terminal output clean during the OAuth flow.
+        """
         # Suppress standard HTTP server logging to keep terminal clean
         pass
 
@@ -60,10 +76,25 @@ class CallbackHandler(BaseHTTPRequestHandler):
 # Get Access token from 3 legged flow
 #------------------------------------------------------------------------#
 def get_access_token_3_legged():
-    """Authenticates using the 3-Legged Authorization Code Flow."""
+    """Authenticates using the 3-Legged Authorization Code Flow.
+
+    This function performs the following steps:
+    1. Starts a local HTTP server to listen for the OAuth callback.
+    2. Constructs the authorization URL for BTP XSUAA.
+    3. Opens the authorization URL in the user's default web browser.
+    4. Waits for the authorization code from the callback.
+    5. Exchanges the authorization code for an access token.
+
+    Returns:
+        The obtained access token as a string.
+
+    Raises:
+        Exception: If the authorization code cannot be retrieved.
+        requests.exceptions.HTTPError: If the token exchange fails.
+    """
     global auth_code
     
-    # 1. Start a local server to listen for the Salesforce callback
+    # 1. Start a local server to listen for the BTP callback
     server_address = ('localhost', 3000)
     httpd = HTTPServer(server_address, CallbackHandler)
     
@@ -109,6 +140,21 @@ def get_access_token_3_legged():
 # Convert currencies
 #------------------------------------------------------------------------#
 def convert_currencies(access_token, amount, source_currency, target_currency):
+    """Converts an amount from a source currency to a target currency
+    using the secured currency conversion API.
+
+    Args:
+        access_token: The OAuth access token for authentication.
+        amount: The amount to convert.
+        source_currency: The currency code of the source (e.g., "usd").
+        target_currency: The currency code of the target (e.g., "eur").
+
+    Returns:
+        A JSON object containing the conversion result.
+
+    Raises:
+        requests.exceptions.HTTPError: If the API call fails.
+    """
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-Type': 'application/json'
@@ -124,6 +170,11 @@ def convert_currencies(access_token, amount, source_currency, target_currency):
 # Main method
 #------------------------------------------------------------------------#
 def main():
+    """Main function to execute the authentication and currency conversion process.
+
+    It obtains an access token and then calls the currency conversion API
+    to convert a fixed amount from USD to EUR.
+    """
     access_token = get_access_token_3_legged()
     response = convert_currencies(access_token, 100, "usd", "eur")
     print("Conversion result: ", response)
