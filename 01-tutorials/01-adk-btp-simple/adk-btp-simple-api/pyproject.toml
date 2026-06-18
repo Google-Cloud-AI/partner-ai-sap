@@ -25,3 +25,8 @@ dependencies = [
     "sap-xssec>=4.2.2",
     "uvicorn>=0.49.0",
 ]
+
+[[tool.uv.index]]
+url = "https://pypi.org/simple"
+default = true
+
