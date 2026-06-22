@@ -24,7 +24,7 @@ Building on our [previous tutorial](../01-adk-btp-simple/README.md), this guide 
 
 Before you begin, ensure you have:
 
-* Fully completed the previous tutorial (including its prerequisites) and successfully:
+* Fully completed the [previous tutorial](../01-adk-btp-simple/README.md) (including its prerequisites) and successfully:
   * Deployed the currency conversion API to your SAP BTP subaccount.
   * Deployed the ADK agent to the Agent Runtime.
   * Tested the agent successfully using the Agent Runtime playground.
@@ -37,7 +37,7 @@ Before you begin, ensure you have:
 
 ## 3. Architecture Overview
 
-The architecture follows the "Brain-Tools-Runtime" pattern introduced in the previous tutorial, with a few additions:
+The architecture follows the "Brain-Tools-Runtime" pattern introduced in the [previous tutorial](../01-adk-btp-simple/README.md), with a few additions:
 
 1. When the user accesses the agent for the first time, Gemini Enterprise initiates the 3-legged OAuth flow to obtain access tokens (and refresh tokens).
 2. Once valid tokens are obtained, Gemini Enterprise securely stores them and passes the access token to the ADK agent in a state variable.
@@ -51,7 +51,7 @@ The architecture follows the "Brain-Tools-Runtime" pattern introduced in the pre
 ## 4. Building the Agent
 
 > [!NOTE]
-> If you haven't completed the previous tutorial, please do so first. The remainder of this document walks you through updating the code and configuration files created there.
+> If you haven't completed the [previous tutorial](../01-adk-btp-simple/README.md), please do so first. The remainder of this document walks you through updating the code and configuration files created there.
 
 ### Step 1: Create an XSUAA Service
 
@@ -147,7 +147,7 @@ This opens a browser window to start the OAuth flow. Once you authenticate again
 
 ### Step 5: Create the Agent Authentication Resource in Gemini Enterprise
 
-The agent created in the previous tutorial cannot access the secure API without an OAuth access token. In our architecture, the client (Gemini Enterprise) manages user authentication and securely passes the access token to the agent.
+The agent created in the [previous tutorial](../01-adk-btp-simple/README.md) cannot access the secure API without an OAuth access token. In our architecture, the client (Gemini Enterprise) manages user authentication and securely passes the access token to the agent.
 
 If you haven't set up Gemini Enterprise yet, please complete the [Gemini Enterprise Quickstart Guide](https://docs.cloud.google.com/gemini/enterprise/docs/quickstart-gemini-enterprise) first. Next, create an [Agent Authentication Resource](https://docs.cloud.google.com/gemini/enterprise/docs/register-and-manage-an-adk-agent#register-an-adk-agent) using the command below.
 
