@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright 2026 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     https://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<PolicyTemplateContainer>
+    <name>PrincipalPropagationForADK</name>
+    <version>1</version>
+    <title>Principal_Propogation_for_ADK</title>
+    <description>Sample policy template for Principal Propogation with Google Cloud Agent Development Kit - ADK. Adapted from https://github.com/SAP/apibusinesshub-api-recipes/tree/master/principalPropagation</description>
+    <proxyEndPointxml>&lt;preFlow&gt;&lt;name&gt;PreFlow&lt;/name&gt;&lt;request&gt;&lt;isRequest&gt;true&lt;/isRequest&gt;&lt;steps&gt;&lt;step&gt;&lt;policy_name&gt;extractInboundJWT&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;1&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;dcodejwt&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;2&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;readFromCache&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;3&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;setConfigJson&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;4&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;verifyIncomingJwt&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;5&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;encodeCredForDest&lt;/policy_name&gt;&lt;condition&gt;myVar.destination.doQueryForFreshToken=="y"&lt;/condition&gt;&lt;sequence&gt;6&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;getDestToken&lt;/policy_name&gt;&lt;condition&gt;myVar.destination.doQueryForFreshToken=="y"&lt;/condition&gt;&lt;sequence&gt;7&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;parseDestResp&lt;/policy_name&gt;&lt;condition&gt;myVar.destination.doQueryForFreshToken=="y"&lt;/condition&gt;&lt;sequence&gt;8&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;getAuthToken&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;9&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;extractFinalToken&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;10&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;prepareForRequest&lt;/policy_name&gt;&lt;condition&gt;&lt;/condition&gt;&lt;sequence&gt;11&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;cacheToken&lt;/policy_name&gt;&lt;condition&gt;myVar.destination.doQueryForFreshToken=="y"&lt;/condition&gt;&lt;sequence&gt;12&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;setCSRFToken&lt;/policy_name&gt;&lt;condition&gt;(request.verb = "POST" OR request.verb = "PUT" OR request.verb = "DELETE")&lt;/condition&gt;&lt;sequence&gt;14&lt;/sequence&gt;&lt;/step&gt;&lt;step&gt;&lt;policy_name&gt;getCSRFToken&lt;/policy_name&gt;&lt;condition&gt;(request.verb = "POST" OR request.verb = "PUT" OR request.verb = "DELETE")&lt;/condition&gt;&lt;sequence&gt;13&lt;/sequence&gt;&lt;/step&gt;&lt;/steps&gt;&lt;/request&gt;&lt;response&gt;&lt;isRequest&gt;false&lt;/isRequest&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/response&gt;&lt;/preFlow&gt;&lt;postFlow&gt;&lt;name&gt;PostFlow&lt;/name&gt;&lt;request&gt;&lt;isRequest&gt;true&lt;/isRequest&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/request&gt;&lt;response&gt;&lt;isRequest&gt;false&lt;/isRequest&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/response&gt;&lt;/postFlow&gt;&lt;defaultFaultRule&gt;&lt;name&gt;defaultFaultRule&lt;/name&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/defaultFaultRule&gt;&lt;postClientFlow&gt;&lt;name&gt;postClientFlow&lt;/name&gt;&lt;response&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/response&gt;&lt;/postClientFlow&gt;</proxyEndPointxml>
+    <life_cycle>
+        <changed_by>kkram@google.com</changed_by>
+        <created_by>kkram@google.com</created_by>
+    </life_cycle>
+    <targetEndPointxml>&lt;preFlow&gt;&lt;name&gt;PreFlow&lt;/name&gt;&lt;request&gt;&lt;isRequest&gt;true&lt;/isRequest&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/request&gt;&lt;response&gt;&lt;isRequest&gt;false&lt;/isRequest&gt;&lt;steps&gt;&lt;step&gt;&lt;policy_name&gt;debugStates&lt;/policy_name&gt;&lt;condition&gt;myVar.debug.enable=true&lt;/condition&gt;&lt;sequence&gt;1&lt;/sequence&gt;&lt;/step&gt;&lt;/steps&gt;&lt;/response&gt;&lt;/preFlow&gt;&lt;postFlow&gt;&lt;name&gt;PostFlow&lt;/name&gt;&lt;request&gt;&lt;isRequest&gt;true&lt;/isRequest&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/request&gt;&lt;response&gt;&lt;isRequest&gt;false&lt;/isRequest&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/response&gt;&lt;/postFlow&gt;&lt;defaultFaultRule&gt;&lt;name&gt;defaultFaultRule&lt;/name&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/defaultFaultRule&gt;&lt;postClientFlow&gt;&lt;name&gt;postClientFlow&lt;/name&gt;&lt;response&gt;&lt;steps&gt;&lt;/steps&gt;&lt;/response&gt;&lt;/postClientFlow&gt;</targetEndPointxml>
+    <policies>
+        <policy type="Javascript">debugStates</policy>
+        <policy type="ServiceCallout">getDestToken</policy>
+        <policy type="DecodeJWT">dcodejwt</policy>
+        <policy type="ExtractVariable">parseDestResp</policy>
+        <policy type="Javascript">prepareForRequest</policy>
+        <policy type="BasicAuth">encodeCredForDest</policy>
+        <policy type="ExtractVariable">extractInboundJWT</policy>
+        <policy type="ServiceCallout">getAuthToken</policy>
+        <policy type="Javascript">setConfigJson</policy>
+        <policy type="ServiceCallout">getCSRFToken</policy>
+        <policy type="PopulateCache">cacheToken</policy>
+        <policy type="AssignMessage">setCSRFToken</policy>
+        <policy type="ExtractVariable">extractFinalToken</policy>
+        <policy type="VerifyJWT">verifyIncomingJwt</policy>
+        <policy type="LookupCache">readFromCache</policy>
+    </policies>
+    <fileResources>
+        <fileResource type="js">overrideResponseForDebug</fileResource>
+        <fileResource type="js">setConfigJson</fileResource>
+        <fileResource type="js">prepareRequest</fileResource>
+    </fileResources>
+</PolicyTemplateContainer>

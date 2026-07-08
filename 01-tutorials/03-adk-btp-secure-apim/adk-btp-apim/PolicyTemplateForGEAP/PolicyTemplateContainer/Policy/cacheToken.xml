@@ -1,0 +1,30 @@
+<!--
+ Copyright 2026 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     https://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- configures how cached values should be written at runtime -->
+<PopulateCache async="false" continueOnError="false" enabled="true" xmlns='http://www.sap.com/apimgmt'>
+	<!-- configures a unique pointer to a piece of data stored in the cache -->
+	<CacheKey>
+		<KeyFragment>ppDestStates</KeyFragment>
+	</CacheKey>
+	<!-- specifies the cache where the data is to be stored -->
+	<Scope>Exclusive</Scope>
+	<ExpirySettings>
+		<!-- the number of seconds after which a cache entry should expire -->
+		<TimeoutInSec>300000</TimeoutInSec>
+	</ExpirySettings>
+	<!-- specifies the variable whose value should be written into cache -->
+	<Source>myVar.cacheString</Source>
+</PopulateCache>
