@@ -1,0 +1,7 @@
+.DS_Store
+currency-conversion-apispec.json
+local/
+deployment/
+tests/
+.env
+*.json
