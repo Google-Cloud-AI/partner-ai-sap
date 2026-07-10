@@ -12,16 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# General
-.DS_Store
-__MACOSX/
-._*
 
-# Local files
-.vscode
-local/
-.Trashes
-.TemporaryItems
-deployment_metadata.json
-.env
-.venv
+[project]
+name = "adk-btp-a2a-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "a2a-sdk[fastapi,http-server]>=0.3.26",
+    "cfenv>=0.5.3",
+    "fastapi>=0.139.0",
+    "google-adk[a2a]>=2.4.0",
+    "python-dotenv>=1.2.2",
+    "requests>=2.34.2",
+    "sap-xssec>=4.2.2",
+    "uvicorn>=0.51.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.org/simple"
+default = true

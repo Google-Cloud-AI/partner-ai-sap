@@ -37,7 +37,7 @@ os.environ["GOOGLE_CLOUD_LOCATION"] = "global"
 os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
 
 #Auth ID used in Gemini Enterprise. Change this if you used a different auth ID
-GE_AUTH_ID = "btp-xsuaa-adk-demos"
+GE_AUTH_ID = "btp-adk-demos"
 
 # ----------------------------------------------------- #
 # Load API Specification and Create OpenAPI Toolset
