@@ -133,7 +133,7 @@ cf service-key adk-demos adk-demos-sk
 
 # Replace these values with your specific service key details
 export XSUAA_URL='https://xxxx.authentication.us30.hana.ondemand.com'
-export CLIENT_ID='sb-currency-conversion-api!xxxx'
+export CLIENT_ID='sb-adk-demos!xxxx'
 export CLIENT_SECRET='f9b5e754-a6e9-xxxxxxxx'
 export CURRENCY_CONVERSION_API_URL='https://currency-conversion-api-XXXXXX.cfapps.us30.hana.ondemand.com'
 
@@ -156,7 +156,7 @@ If you haven't set up Gemini Enterprise yet, please complete the [Gemini Enterpr
 > * **`PROJECT_ID`**: Your Google Cloud project ID (e.g., `my-demo-project`).
 > * **`PROJECT_NUMBER`**: Your Google Cloud project number (e.g., `1234567890`).
 > * **`ENDPOINT_LOCATION` / `LOCATION`**: The region for your Gemini Enterprise app (`global`, `us`, or `eu`).
-> * **`AUTH_ID`**: A unique identifier for this authentication configuration (e.g., `btp-xsuaa-adk-demos`).
+> * **`AUTH_ID`**: A unique identifier for this authentication configuration (e.g., `btp-adk-demos`. If you use a different ID here, make sure to update it in the agent code - check GE_AUTH_ID ).
 > * **`OAUTH_CLIENT_ID`**: The `clientid` from your BTP XSUAA service key.
 > * **`OAUTH_CLIENT_SECRET`**: The `clientsecret` from your BTP XSUAA service key.
 > * **`OAUTH_AUTH_URI`**: The authorization endpoint from your BTP XSUAA service key (e.g., `https://xxxxxxx.authentication.us30.hana.ondemand.com/oauth/authorize`).

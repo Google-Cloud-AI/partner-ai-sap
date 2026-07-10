@@ -3,3 +3,4 @@ local/
 deployment/
 tests/
 .env
+*.json

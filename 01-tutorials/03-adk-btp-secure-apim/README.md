@@ -7,7 +7,7 @@
 
 ### **Objective**
 
-Building on our previous tutorial, this guide covers exposing a backend **SAP ERP** OData API through **SAP BTP API Management (APIM)** and consuming it with an **ADK-based** agent deployed to **Agent Runtime**. You will learn to configure policies, destinations, and supporting services in SAP BTP API Management for principal propagation, ensuring that the user context from Gemini Enterprise is carried over to the backend SAP ERP application.
+Building on our [previous tutorial](../02-adk-btp-secure/README.md), this guide covers exposing a backend **SAP ERP** OData API through **SAP BTP API Management (APIM)** and consuming it with an **ADK-based** agent deployed to **Agent Runtime**. You will learn to configure policies, destinations, and supporting services in SAP BTP API Management for principal propagation, ensuring that the user context from Gemini Enterprise is carried over to the backend SAP ERP application.
 
 ### **Scope**
 
@@ -27,7 +27,7 @@ Building on our previous tutorial, this guide covers exposing a backend **SAP ER
 
 Before you begin, ensure you have the following:
 
-*   You have fully completed the previous tutorial (including its prerequisites) and have successfully:
+*   You have fully completed the [previous tutorial](../02-adk-btp-secure/README.md) (including its prerequisites) and have successfully:
     *   Deployed and secured the currency conversion API to your SAP BTP subaccount.
     *   Deployed the ADK agent to Agent Runtime.
     *   Registered the ADK agent with Gemini Enterprise.
@@ -74,7 +74,7 @@ The following diagram shows the relationships between components and the process
 
 ## **4\. Configure BTP API Management and Redeploy the Agent**
 
-If you have not gone through the previous tutorial, please do so now. The remainder of this document will walk you through making changes to the code and configuration files you created in that tutorial.
+If you have not gone through the [previous tutorial](../02-adk-btp-secure/README.md), please do so now. The remainder of this document will walk you through making changes to the code and configuration files you created in that tutorial.
 
 ### **Step 1: Create a Destination Service Instance (plan: lite) and Service Key**
 
@@ -246,7 +246,7 @@ A successful deployment will output details similar to the following:
 
 ## **5\. Testing the Agent with Gemini Enterprise**
 
-Launch your Gemini Enterprise App and access the **BTP ADK Demo** agent. If you did not complete the OAuth flow in the previous tutorial, the agent will prompt you to log in to SAP BTP. Once you log in, you can converse with the agent. You can not only query for sales orders but also perform mutations, such as creating new items in an existing sales order.
+Launch your Gemini Enterprise App and access the **BTP ADK Demo** agent. If you did not complete the OAuth flow in the [previous tutorial](../02-adk-btp-secure/README.md), the agent will prompt you to log in to SAP BTP. Once you log in, you can converse with the agent. You can not only query for sales orders but also perform mutations, such as creating new items in an existing sales order.
 
 ![GE Conversation](assets/ge_conversation.png)
 

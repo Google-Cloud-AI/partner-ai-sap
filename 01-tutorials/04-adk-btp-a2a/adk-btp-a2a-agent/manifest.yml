@@ -11,17 +11,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-# General
-.DS_Store
-__MACOSX/
-._*
-
-# Local files
-.vscode
-local/
-.Trashes
-.TemporaryItems
-deployment_metadata.json
-.env
-.venv
+---
+applications:
+- name: adk-agent-a2a
+  random-route: true
+  path: ./
+  memory: 1024M
+  disk_quota: 2G 
+  buildpacks: 
+  - python_buildpack
+  command: python main.py
+  services:
+  - adk-demos
+  env:
+    BTP_XSUAA_SERVICE: "adk-demos"
+    AGENT_RUNTIME_IS_BTP: "Y"
