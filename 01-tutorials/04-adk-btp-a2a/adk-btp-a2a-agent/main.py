@@ -183,7 +183,7 @@ class BTPAuthMiddleware(BaseHTTPMiddleware):
                 netloc = request.headers.get("x-forwarded-host") or request.url.netloc
                 base_url = f"{scheme}://{netloc}"                
 
-                # Dynamic Interjection: Inject your structural fields 
+                # Dynamic Injection: Inject your structural fields 
                 card_data["url"] = base_url
                 card_data["securitySchemes"] = {
                     "Bearer": {
@@ -193,13 +193,6 @@ class BTPAuthMiddleware(BaseHTTPMiddleware):
                         "type": "http"
                     }
                 }
-                card_data["protocolBindings"] = {
-                    "transport": "http-jsonrpc", 
-                    "security": {
-                        "schemeName": "Bearer"
-                    }
-                }
-                
                 # Re-serialize back to transmission bytes
                 new_body = json.dumps(card_data).encode("utf-8")
 
